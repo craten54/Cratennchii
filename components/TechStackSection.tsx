@@ -104,11 +104,11 @@ export default function TechStackSection() {
   const getCategoryColor = (category: string) => {
     switch (category) {
       case "Frontend":
-        return "text-emerald-400 border-emerald-500/20 bg-emerald-500/5";
+        return "text-emerald-600 dark:text-emerald-400 border-emerald-500/20 bg-emerald-500/5";
       case "Backend":
-        return "text-cyan-400 border-cyan-500/20 bg-cyan-500/5";
+        return "text-cyan-600 dark:text-cyan-400 border-cyan-500/20 bg-cyan-500/5";
       default:
-        return "text-amber-400 border-amber-500/20 bg-amber-500/5";
+        return "text-amber-600 dark:text-amber-400 border-amber-500/20 bg-amber-500/5";
     }
   };
 
@@ -124,13 +124,13 @@ export default function TechStackSection() {
   };
 
   return (
-    <section id="techstack" className="flex flex-col gap-12 py-12 border-t border-zinc-900/60">
+    <section id="techstack" className="flex flex-col gap-12 py-12 border-t border-zinc-200 dark:border-zinc-900/60">
       <div className="flex flex-col gap-4 max-w-2xl">
-        <span className="font-mono text-xs text-amber-400 tracking-widest uppercase">
+        <span className="font-mono text-xs text-amber-600 dark:text-amber-400 tracking-widest uppercase">
           {"// CORE TECHNOLOGICAL INDEX"}
         </span>
-        <h2 className="text-3xl font-light tracking-tight text-white font-sans">
-          Technical <span className="font-medium text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-400 to-amber-400">Weaponry & Stack</span>
+        <h2 className="text-3xl font-light tracking-tight text-zinc-900 dark:text-white font-sans">
+          Technical <span className="font-medium text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-cyan-600 to-amber-500 dark:from-emerald-400 dark:via-cyan-400 dark:to-amber-400">Weaponry & Stack</span>
         </h2>
       </div>
 
@@ -140,7 +140,7 @@ export default function TechStackSection() {
           return (
             <div
               key={item.name}
-              className={`border border-zinc-800/60 bg-black/60 p-6 flex flex-col gap-4 transition-all duration-300 rounded-sm relative group overflow-hidden ${getBorderColorClass(
+              className={`border border-zinc-200 dark:border-zinc-800/60 bg-white/60 dark:bg-black/60 p-6 flex flex-col gap-4 transition-all duration-300 rounded-sm relative group overflow-hidden shadow-sm dark:shadow-none ${getBorderColorClass(
                 item.category
               )}`}
             >
@@ -150,14 +150,14 @@ export default function TechStackSection() {
                 )}`}>
                   {item.category}
                 </span>
-                <IconComponent className="size-6 text-zinc-500 group-hover:text-zinc-100 transition-colors duration-300" />
+                <IconComponent className="size-6 text-zinc-400 dark:text-zinc-500 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors duration-300" />
               </div>
 
               <div className="flex flex-col gap-1.5">
-                <h3 className="text-base font-semibold text-zinc-100 tracking-tight">
+                <h3 className="text-base font-semibold text-zinc-800 dark:text-zinc-100 tracking-tight">
                   {item.name}
                 </h3>
-                <p className="text-zinc-400 text-xs leading-relaxed font-sans">
+                <p className="text-zinc-600 dark:text-zinc-400 text-xs leading-relaxed font-sans">
                   {item.description}
                 </p>
               </div>

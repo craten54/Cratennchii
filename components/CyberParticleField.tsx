@@ -192,8 +192,11 @@ export default function CyberParticleField({
     };
 
     const draw = (canvasContext: CanvasRenderingContext2D, particles: Particle[], canvasWidth: number, canvasHeight: number) => {
-      canvasContext.fillStyle = "rgba(10, 10, 10, 1)";
-      canvasContext.fillRect(0, 0, canvasWidth, canvasHeight);
+      // Clear canvas background dynamically (transparent overlay on body CSS background)
+      canvasContext.clearRect(0, 0, canvasWidth, canvasHeight);
+
+      const isCyan = themeColor === "#06b6d4";
+      const rgbString = isCyan ? "6, 182, 212" : "16, 185, 129";
 
       // Menggambar jaring konstelasi siber antar-titik orbit
       canvasContext.lineWidth = 0.45;
@@ -204,8 +207,10 @@ export default function CyberParticleField({
           const dist = Math.hypot(p1.x - p2.x, p1.y - p2.y);
 
           if (dist < maxLineDistance) {
-            const alpha = (1.0 - dist / maxLineDistance) * 0.11;
-            canvasContext.strokeStyle = `rgba(16, 185, 129, ${alpha})`;
+            // Slightly higher line opacity in light mode for better visual definition
+            const baseAlpha = isCyan ? 0.22 : 0.11;
+            const alpha = (1.0 - dist / maxLineDistance) * baseAlpha;
+            canvasContext.strokeStyle = `rgba(${rgbString}, ${alpha})`;
             canvasContext.beginPath();
             canvasContext.moveTo(p1.x, p1.y);
             canvasContext.lineTo(p2.x, p2.y);
@@ -214,18 +219,18 @@ export default function CyberParticleField({
         }
       }
 
-      // Menggambar bulatan core partikel hijau emerald
+      // Menggambar bulatan core partikel
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
 
         canvasContext.beginPath();
         canvasContext.arc(p.x, p.y, p.radius * 2.2, 0, Math.PI * 2);
-        canvasContext.fillStyle = `rgba(16, 185, 129, ${p.alpha * 0.12})`;
+        canvasContext.fillStyle = `rgba(${rgbString}, ${p.alpha * 0.12})`;
         canvasContext.fill();
 
         canvasContext.beginPath();
         canvasContext.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        canvasContext.fillStyle = `rgba(16, 185, 129, ${p.alpha})`;
+        canvasContext.fillStyle = `rgba(${rgbString}, ${p.alpha})`;
         canvasContext.fill();
       }
     };

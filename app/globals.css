@@ -1,19 +1,25 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
+  --background: #fafafa;
+  --foreground: #18181b;
+}
+
+.dark {
   --background: #0a0a0a;
   --foreground: #ededed;
 }
 
-/* Menggunakan selector universal agar Tailwind v4 membaca variabel global dengan aman */
 body {
-  background-color: #0a0a0a !important;
-  color: #ededed;
+  background-color: var(--background) !important;
+  color: var(--foreground);
   margin: 0;
   padding: 0;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-/* Memastikan elemen canvas berada di posisi mutlak dan tidak menutupi interaksi teks */
 canvas {
   display: block;
   position: fixed;
@@ -24,13 +30,67 @@ canvas {
   pointer-events: none;
 }
 
-.text-outline-cyber {
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
-  color: transparent;
-  transition: all 0.3s ease;
+/* ==========================================================================
+   GAME-STYLE SEASON CHANGE: SOFT ASCENDING FOG TRANSITION
+   ========================================================================== */
+
+.fog-ascend-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 250vh;
+  /* Sangat tinggi agar buntut gradasi kabutnya panjang dan lembut */
+  z-index: 99999 !important;
+  /* Memaksa kabut berdiri di lapisan paling depan menutupi semua dashboard */
+  pointer-events: none;
+  will-change: transform;
+
+  /* Desain Kabut: Atas tipis blur (transparent) -> Tengah menyapu -> Bawah solid pekat */
+  background: linear-gradient(to top,
+      var(--vortex-target-color) 0%,
+      var(--vortex-target-color) 50%,
+      var(--vortex-mid-color) 65%,
+      transparent 100%);
+
+  /* Efek blur transparan di ujung kabut agar selembut awan */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  /* Posisi awal disembunyikan tepat di bawah batas layar monitor */
+  transform: translateY(100vh);
+
+  /* Memicu animasi meluncur naik */
+  animation: softSeasonChange 1800ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-.text-outline-cyber:hover {
-  -webkit-text-stroke: 1px rgba(16, 185, 129, 0.4);
-  color: rgba(16, 185, 129, 0.03);
+@keyframes softSeasonChange {
+  0% {
+    transform: translateY(100vh);
+  }
+
+  /* Kabut menanjak naik, menutup monitor sepenuhnya di kisaran frame 55% - 65% */
+  55% {
+    transform: translateY(-50vh);
+  }
+
+  65% {
+    transform: translateY(-50vh);
+  }
+
+  /* Kabut melesat terangkat ke atas keluar melewati atap browser */
+  100% {
+    transform: translateY(-250vh);
+  }
+}
+
+/* Mengunci scrollbar dan interaksi kursor selama transisi kabut berjalan */
+.theme-transitioning {
+  overflow: hidden !important;
+  pointer-events: none !important;
+}
+
+.theme-transitioning,
+.theme-transitioning * {
+  transition: none !important;
 }

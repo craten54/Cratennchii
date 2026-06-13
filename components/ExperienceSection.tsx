@@ -65,13 +65,13 @@ export default function ExperienceSection() {
     <section className="flex flex-col gap-16 py-12">
       {/* Centered Page Header */}
       <div className="flex flex-col items-center text-center gap-4 max-w-2xl mx-auto">
-        <span className="font-mono text-xs text-cyan-400 tracking-widest uppercase">
+        <span className="font-mono text-xs text-cyan-500 dark:text-cyan-400 tracking-widest uppercase">
           {"// CAPABILITIES TIMELINE"}
         </span>
-        <h1 className="text-4xl sm:text-5xl font-light tracking-tight text-white font-sans">
+        <h1 className="text-4xl sm:text-5xl font-light tracking-tight text-zinc-900 dark:text-white font-sans">
           Capabilities
         </h1>
-        <p className="text-zinc-400 text-sm sm:text-base leading-relaxed font-sans">
+        <p className="text-zinc-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed font-sans">
           My skills, experiences, and community milestones over the years.
         </p>
       </div>
@@ -95,39 +95,39 @@ export default function ExperienceSection() {
                     href={item.link || "#"}
                     target={item.link ? "_blank" : undefined}
                     rel={item.link ? "noopener noreferrer" : undefined}
-                    className={`border border-zinc-900/80 bg-black/60 hover:bg-black/80 hover:border-cyan-500/30 p-6 rounded-sm flex flex-col gap-4 transition-all duration-300 group ${
+                    className={`border border-zinc-200 dark:border-zinc-900/80 bg-white/60 dark:bg-black/60 hover:bg-zinc-50 dark:hover:bg-black/80 hover:border-cyan-500/30 p-6 rounded-sm flex flex-col gap-4 transition-all duration-300 group shadow-sm dark:shadow-none ${
                       item.link ? "cursor-pointer" : "cursor-default"
                     }`}
                   >
                     {/* Header: Icon & External Link */}
                     <div className="flex items-center justify-between">
-                      <Icon className="size-6 text-zinc-500 group-hover:text-cyan-400 transition-colors duration-300" />
+                      <Icon className="size-6 text-zinc-400 dark:text-zinc-500 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors duration-300" />
                       {item.link && (
-                        <FiExternalLink className="size-3 text-zinc-600 group-hover:text-cyan-400 transition-colors shrink-0" />
+                        <FiExternalLink className="size-3 text-zinc-400 dark:text-zinc-600 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors shrink-0" />
                       )}
                     </div>
 
                     {/* Information */}
                     <div className="flex flex-col gap-2">
-                      <h3 className="text-base font-semibold text-zinc-200 tracking-tight group-hover:text-white transition-colors flex items-center gap-1.5 flex-wrap">
+                      <h3 className="text-base font-semibold text-zinc-800 dark:text-zinc-200 tracking-tight group-hover:text-zinc-955 dark:group-hover:text-white transition-colors flex items-center gap-1.5 flex-wrap">
                         {item.title}
                         {item.status && (
-                          <span className="text-[9px] font-mono uppercase bg-yellow-950/60 border border-yellow-500/20 text-yellow-400 px-1.5 py-0.5 rounded-sm shrink-0">
+                          <span className="text-[9px] font-mono uppercase bg-amber-100 dark:bg-yellow-950/60 border border-amber-300 dark:border-yellow-500/20 text-amber-800 dark:text-yellow-400 px-1.5 py-0.5 rounded-sm shrink-0">
                             {item.status}
                           </span>
                         )}
                       </h3>
-                      <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed font-sans">
+                      <p className="text-zinc-600 dark:text-zinc-400 text-xs sm:text-sm leading-relaxed font-sans">
                         {item.description}
                       </p>
                     </div>
 
                     {/* Tags */}
-                    <div className="flex flex-wrap gap-1.5 mt-auto pt-2 border-t border-zinc-950">
+                    <div className="flex flex-wrap gap-1.5 mt-auto pt-2 border-t border-zinc-100 dark:border-zinc-950">
                       {item.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="bg-zinc-950 border border-zinc-900 text-zinc-500 font-mono text-[9px] px-2 py-0.5"
+                          className="bg-zinc-100 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-900 text-zinc-600 dark:text-zinc-550 font-mono text-[9px] px-2 py-0.5"
                         >
                           {tag}
                         </span>
