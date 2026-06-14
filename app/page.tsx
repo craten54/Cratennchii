@@ -287,76 +287,76 @@ export default function Home() {
   };
 
   return (
-    <div className="relative w-full overflow-x-hidden text-zinc-900 dark:text-zinc-100 font-sans selection:bg-emerald-500/30 selection:text-emerald-400">
-      {/* Main Container */}
-      <main className="relative z-10 mx-auto max-w-7xl px-6 py-12 md:py-20 flex flex-col gap-24">
+    <div className="w-full flex-1 flex flex-col justify-center overflow-hidden text-zinc-900 dark:text-zinc-100 font-sans selection:bg-emerald-500/30 selection:text-emerald-400">
+      {/* Main Container dengan Padding Diperketat */}
+      <main className="w-full mx-auto max-w-7xl px-6 py-4 flex flex-col justify-center h-full">
 
-        {/* Section 1: Overview & Welcome Landing (Home) */}
-        <section id="overview" className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center min-h-[calc(100vh-200px)]">
+        {/* Section 1: Ketinggian Dihitung Dinamis Mengikuti Sisa Viewport Layar */}
+        <section id="overview" className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center h-full max-h-[calc(100vh-140px)]">
 
           {/* Left Column: Biodata & Main Headline */}
-          <div className="lg:col-span-5 flex flex-col gap-6 justify-center">
-            <span className="font-mono text-xs text-emerald-600 dark:text-emerald-400 tracking-widest uppercase flex items-center gap-2">
+          <div className="lg:col-span-5 flex flex-col gap-4 justify-center">
+            <span className="font-mono text-[10px] text-emerald-600 dark:text-emerald-400 tracking-widest uppercase flex items-center gap-2">
               <span className="w-4 h-[1px] bg-emerald-500 inline-block" /> COMPUTER SCIENCE STUDENT
             </span>
-            <h1 className="text-5xl sm:text-7xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-cyan-500 dark:from-emerald-400 dark:to-cyan-400 leading-tight">
+            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-cyan-500 dark:from-emerald-400 dark:to-cyan-400 leading-tight">
               Stan Fredheric
             </h1>
-            <p className="text-zinc-600 dark:text-zinc-400 text-sm sm:text-base max-w-xl leading-relaxed">
+            <p className="text-zinc-600 dark:text-zinc-400 text-xs sm:text-sm max-w-xl leading-relaxed">
               Mahasiswa Computer Science di Universitas Padjadjaran dengan fokus mendalam pada <em>full-stack web development</em>, keamanan siber, dan manajemen ekosistem digital. Di satu sisi, saya aktif membangun aplikasi web interaktif berkinerja tinggi menggunakan Next.js, Tailwind CSS, dan Supabase. Di sisi lain, sebagai seorang <em>cyber enthusiast</em>, saya mendedikasikan waktu untuk mengeksplorasi tantangan CTF guna mengasah keahlian di bidang <em>penetration testing</em>, OSINT, dan analisis kerentanan sistem, sembari turut mengelola aspek operasional serta tata tertib komunitas digital. Melalui portofolio ini, saya mengintegrasikan prinsip keamanan siber ke dalam arsitektur kode modern untuk menciptakan solusi digital yang kokoh, fungsional, dan <em>production-ready</em>.
             </p>
 
             {/* Social Media Connectors */}
-            <div className="flex flex-wrap gap-3 items-center pt-2">
+            <div className="flex flex-wrap gap-2.5 items-center pt-1">
               <a
                 href={SOCIAL_LINKS.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-2 font-mono text-[11px] border border-zinc-200 dark:border-zinc-800 bg-white/40 dark:bg-zinc-950/40 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white px-4 py-2.5 transition-all shadow-sm dark:shadow-none"
+                className="group flex items-center gap-2 font-mono text-[10px] border border-zinc-200 dark:border-zinc-800 bg-white/40 dark:bg-zinc-950/40 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white px-3 py-2 transition-all shadow-sm dark:shadow-none"
               >
-                <FiGithub className="size-4 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors" />
+                <FiGithub className="size-3.5 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors" />
                 <span className="tracking-wider">GITHUB</span>
               </a>
               <a
                 href={SOCIAL_LINKS.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-2 font-mono text-[11px] border border-zinc-200 dark:border-zinc-800 bg-white/40 dark:bg-zinc-950/40 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white px-4 py-2.5 transition-all shadow-sm dark:shadow-none"
+                className="group flex items-center gap-2 font-mono text-[10px] border border-zinc-200 dark:border-zinc-800 bg-white/40 dark:bg-zinc-950/40 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white px-3 py-2 transition-all shadow-sm dark:shadow-none"
               >
-                <FiLinkedin className="size-4 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors" />
+                <FiLinkedin className="size-3.5 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors" />
                 <span className="tracking-wider">LINKEDIN</span>
               </a>
               <a
                 href={SOCIAL_LINKS.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-2 font-mono text-[11px] border border-zinc-200 dark:border-zinc-800 bg-white/40 dark:bg-zinc-950/40 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white px-4 py-2.5 transition-all shadow-sm dark:shadow-none"
+                className="group flex items-center gap-2 font-mono text-[10px] border border-zinc-200 dark:border-zinc-800 bg-white/40 dark:bg-zinc-950/40 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white px-3 py-2 transition-all shadow-sm dark:shadow-none"
               >
-                <FiInstagram className="size-4 group-hover:text-pink-500 dark:group-hover:text-pink-400 transition-colors" />
+                <FiInstagram className="size-3.5 group-hover:text-pink-500 dark:group-hover:text-pink-400 transition-colors" />
                 <span className="tracking-wider">INSTAGRAM</span>
               </a>
               <a
                 href={SOCIAL_LINKS.discord}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-2 font-mono text-[11px] border border-zinc-200 dark:border-zinc-800 bg-white/40 dark:bg-zinc-950/40 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white px-4 py-2.5 transition-all shadow-sm dark:shadow-none"
+                className="group flex items-center gap-2 font-mono text-[10px] border border-zinc-200 dark:border-zinc-800 bg-white/40 dark:bg-zinc-950/40 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white px-3 py-2 transition-all shadow-sm dark:shadow-none"
               >
-                <FaDiscord className="size-4 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors" />
+                <FaDiscord className="size-3.5 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors" />
                 <span className="tracking-wider">DISCORD</span>
               </a>
               <a
                 href={SOCIAL_LINKS.email}
-                className="group flex items-center gap-2 font-mono text-[11px] border border-zinc-200 dark:border-zinc-800 bg-white/40 dark:bg-zinc-950/40 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white px-4 py-2.5 transition-all shadow-sm dark:shadow-none"
+                className="group flex items-center gap-2 font-mono text-[10px] border border-zinc-200 dark:border-zinc-800 bg-white/40 dark:bg-zinc-950/40 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white px-3 py-2 transition-all shadow-sm dark:shadow-none"
               >
-                <FiMail className="size-4 group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors" />
+                <FiMail className="size-3.5 group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors" />
                 <span className="tracking-wider">EMAIL</span>
               </a>
             </div>
 
-            <div className="flex flex-wrap gap-4 pt-4">
+            <div className="flex flex-wrap gap-4 pt-2">
               <Link
                 href="/projects"
-                className="bg-emerald-500 hover:bg-emerald-600 text-black font-mono text-xs font-semibold px-6 py-3.5 transition-all tracking-wider shadow-[0_0_15px_rgba(16,185,129,0.2)] hover:shadow-[0_0_25px_rgba(16,185,129,0.4)]"
+                className="bg-emerald-500 hover:bg-emerald-600 text-black font-mono text-xs font-semibold px-5 py-3 transition-all tracking-wider shadow-[0_0_15px_rgba(16,185,129,0.15)] hover:shadow-[0_0_25px_rgba(16,185,129,0.35)]"
               >
                 GET TO KNOW ME MORE
               </Link>
@@ -364,9 +364,9 @@ export default function Home() {
           </div>
 
           {/* Right Column: HUD Dashboard Monitor */}
-          <div className="lg:col-span-7 border border-zinc-200 dark:border-zinc-800/80 bg-white/80 dark:bg-black/80 rounded-sm shadow-2xl p-6 flex flex-col justify-between backdrop-blur-sm shadow-zinc-200/50 dark:shadow-none">
-            <div className="flex flex-col gap-5">
-              <div className="flex items-center justify-between pb-3 border-b border-zinc-100 dark:border-zinc-900">
+          <div className="lg:col-span-7 border border-zinc-200 dark:border-zinc-800/80 bg-white/80 dark:bg-black/80 rounded-sm shadow-2xl p-5 flex flex-col justify-between backdrop-blur-sm shadow-zinc-200/50 dark:shadow-none">
+            <div className="flex flex-col gap-4">
+              <div className="flex items-center justify-between pb-2 border-b border-zinc-100 dark:border-zinc-900">
                 <div className="flex items-center gap-2">
                   <div className="flex gap-1">
                     <span className="size-1.5 rounded-full bg-red-500/60" />
@@ -375,18 +375,17 @@ export default function Home() {
                   </div>
                   <span className="font-mono text-[10px] text-zinc-400 dark:text-zinc-500 tracking-wider">CORE_MONITOR.SH</span>
                 </div>
-                <div className="font-mono text-[11px] text-zinc-500 dark:text-zinc-400">
+                <div className="font-mono text-[10px] text-zinc-500 dark:text-zinc-400">
                   TELEMETRY: <span className="text-emerald-600 dark:text-emerald-400 font-medium">ONLINE</span>
                 </div>
               </div>
 
-              {/* Flex Layout yang Menyeimbangkan Kiri & Kanan */}
+              {/* Flex Layout Kiri & Kanan Dashboard */}
               <div className="flex flex-col md:flex-row gap-5 items-stretch">
 
-                {/* Left Side: Profile Picture Box (Pas Lebar & Tinggi) */}
+                {/* Left Side: Profile Picture Box */}
                 <div className="w-full md:w-[150px] shrink-0 flex flex-col items-center justify-center border border-zinc-200 dark:border-zinc-900 bg-zinc-50/20 dark:bg-zinc-950/20 p-3.5 rounded-sm self-start">
                   <div className="relative size-24 border border-emerald-500/30 dark:border-emerald-500/20 p-1 bg-zinc-950/20 shadow-[0_0_15px_rgba(16,185,129,0.08)] overflow-hidden group rounded-sm flex items-center justify-center">
-                    {/* Glowing scanning overlay line */}
                     <div className="absolute inset-x-0 h-[1.5px] bg-emerald-500/60 shadow-[0_0_8px_#10b981] animate-scan z-10 pointer-events-none" />
 
                     {!imageError ? (
@@ -410,7 +409,7 @@ export default function Home() {
                       craten@stan-os
                     </span>
 
-                    {/* Hyperlink Kredit Art Aktif */}
+                    {/* Hyperlink Kredit Art */}
                     <span className="font-mono text-[9px] text-zinc-400 dark:text-zinc-500 tracking-wide mt-0.5">
                       Art by{" "}
                       <a
@@ -475,8 +474,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Quick Connect Footer for Dashboard Panel */}
-            <div className="pt-4 mt-4 border-t border-zinc-100 dark:border-zinc-900 flex items-center justify-between font-mono text-[10px] text-zinc-400 dark:text-zinc-500">
+            {/* Quick Connect Footer Panel */}
+            <div className="pt-3 mt-3 border-t border-zinc-100 dark:border-zinc-900 flex items-center justify-between font-mono text-[10px] text-zinc-400 dark:text-zinc-500">
               <span>QUICK_CONNECT //</span>
               <div className="flex gap-4 text-zinc-600 dark:text-zinc-400">
                 <a href={SOCIAL_LINKS.github} target="_blank" rel="noopener noreferrer" className="hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors"><FiGithub size={13} /></a>

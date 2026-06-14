@@ -98,7 +98,7 @@ export default function ThemeWrapper({ children }: { children: React.ReactNode }
           <Link href="/" className="flex items-center gap-3 shrink-0">
             <span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
             <span className="font-mono text-xs font-semibold tracking-widest text-zinc-900 dark:text-zinc-200 uppercase">
-              STAN FREDHERIC
+              Cratennchii
             </span>
           </Link>
           
@@ -167,7 +167,7 @@ export default function ThemeWrapper({ children }: { children: React.ReactNode }
       <footer className="border-t border-zinc-200 dark:border-zinc-900/80 bg-zinc-50/40 dark:bg-zinc-950/40 py-4 relative z-10 shrink-0">
         <div className="mx-auto max-w-7xl px-6 flex flex-col md:flex-row items-center justify-between gap-6">
           <span className="font-mono text-[10px] text-zinc-500 dark:text-zinc-600 tracking-wider uppercase">
-            © {new Date().getFullYear()} STAN FREDHERIC. BUILT WITH NEXT.JS APP ROUTER & STRICT TYPES.
+            © {new Date().getFullYear()} Cratennchii. BUILT WITH NEXT.JS APP ROUTER & STRICT TYPES.
           </span>
           <div className="flex gap-6 font-mono text-[10px] text-zinc-400 dark:text-zinc-500">
             <span className="text-zinc-500 dark:text-zinc-700">STATUS: NO_CRITICAL_VULN</span>

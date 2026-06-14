@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased selection:bg-emerald-500/30 selection:text-emerald-400`}
+      className={`${geistSans.variable} ${geistMono.variable} antialiased selection:bg-emerald-500/30 selection:text-emerald-400`}
       suppressHydrationWarning
     >
       <head>
@@ -45,7 +45,8 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="h-screen overflow-hidden flex flex-col bg-[#0a0a0a] text-zinc-100">
+      {/* Diatur agar tingginya pas satu layar penuh */}
+      <body className="w-full h-screen flex flex-col bg-[#0a0a0a] text-zinc-100 overflow-x-hidden">
         <ThemeWrapper>{children}</ThemeWrapper>
       </body>
     </html>
