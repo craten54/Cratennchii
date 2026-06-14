@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { FiSun, FiMoon } from "react-icons/fi";
 import CyberParticleField from "./CyberParticleField";
 import ThemeTransitionOverlay from "./ThemeTransitionOverlay";
@@ -11,6 +12,7 @@ export default function ThemeWrapper({ children }: { children: React.ReactNode }
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [targetTheme, setTargetTheme] = useState<"dark" | "light">("dark");
   const [clickPos, setClickPos] = useState<{ x: number; y: number } | null>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     const saved = localStorage.getItem("theme") as "dark" | "light";
@@ -33,6 +35,20 @@ export default function ThemeWrapper({ children }: { children: React.ReactNode }
       document.documentElement.classList.remove("theme-transitioning");
     };
   }, [isTransitioning]);
+
+  useEffect(() => {
+    const handleThemeTrigger = () => {
+      if (isTransitioning) return;
+      const next = theme === "dark" ? "light" : "dark";
+      setClickPos(null);
+      setTargetTheme(next);
+      setIsTransitioning(true);
+    };
+    window.addEventListener("trigger-theme-toggle", handleThemeTrigger);
+    return () => {
+      window.removeEventListener("trigger-theme-toggle", handleThemeTrigger);
+    };
+  }, [theme, isTransitioning]);
 
   const handleToggleTheme = (e?: React.MouseEvent) => {
     if (isTransitioning) return;
@@ -77,9 +93,9 @@ export default function ThemeWrapper({ children }: { children: React.ReactNode }
       )}
 
       {/* Global Navigation Header */}
-      <header className="sticky top-0 z-50 w-full border-b border-zinc-200/50 dark:border-zinc-900/60 bg-white/70 dark:bg-[#0a0a0a]/70 backdrop-blur-md px-6 py-4 transition-all">
-        <div className="mx-auto max-w-7xl flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
+      <header className="sticky top-0 z-50 w-full flex justify-center px-4 py-4 pointer-events-none">
+        <div className="w-full max-w-5xl flex items-center justify-between border border-zinc-200/40 dark:border-zinc-800/80 bg-white/80 dark:bg-zinc-950/70 backdrop-blur-md px-6 py-2.5 rounded-full shadow-lg dark:shadow-none pointer-events-auto transition-all">
+          <Link href="/" className="flex items-center gap-3 shrink-0">
             <span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
             <span className="font-mono text-xs font-semibold tracking-widest text-zinc-900 dark:text-zinc-200 uppercase">
               STAN FREDHERIC
@@ -87,17 +103,53 @@ export default function ThemeWrapper({ children }: { children: React.ReactNode }
           </Link>
           
           <div className="flex items-center gap-6">
-            <nav className="hidden sm:flex items-center gap-8 font-mono text-[11px] text-zinc-600 dark:text-zinc-400 tracking-wider">
-              <Link href="/" className="hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors uppercase">{"// HOME"}</Link>
-              <Link href="/projects" className="hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors uppercase">{"// PROJECTS"}</Link>
-              <Link href="/capabilities" className="hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors uppercase">{"// CAPABILITIES"}</Link>
-              <Link href="/techstack" className="hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors uppercase">{"// TECH_STACK"}</Link>
+            <nav className="hidden sm:flex items-center gap-1.5 font-mono text-[10px] tracking-wider">
+              <Link 
+                href="/" 
+                className={`transition-all rounded-full px-3.5 py-1.5 uppercase ${
+                  pathname === "/" 
+                    ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-semibold border border-emerald-500/15" 
+                    : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-900/60"
+                }`}
+              >
+                {"// HOME"}
+              </Link>
+              <Link 
+                href="/projects" 
+                className={`transition-all rounded-full px-3.5 py-1.5 uppercase ${
+                  pathname === "/projects" 
+                    ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-semibold border border-emerald-500/15" 
+                    : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-900/60"
+                }`}
+              >
+                {"// PROJECTS"}
+              </Link>
+              <Link 
+                href="/capabilities" 
+                className={`transition-all rounded-full px-3.5 py-1.5 uppercase ${
+                  pathname === "/capabilities" 
+                    ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-semibold border border-emerald-500/15" 
+                    : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-900/60"
+                }`}
+              >
+                {"// CAPABILITIES"}
+              </Link>
+              <Link 
+                href="/techstack" 
+                className={`transition-all rounded-full px-3.5 py-1.5 uppercase ${
+                  pathname === "/techstack" 
+                    ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-semibold border border-emerald-500/15" 
+                    : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-900/60"
+                }`}
+              >
+                {"// TECH_STACK"}
+              </Link>
             </nav>
 
             {/* Dark/Light mode button */}
             <button
               onClick={handleToggleTheme}
-              className="p-2 border border-zinc-200 dark:border-zinc-855 bg-zinc-50 dark:bg-zinc-950/40 text-zinc-600 dark:text-zinc-400 hover:text-emerald-500 dark:hover:text-emerald-400 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 transition-all rounded-sm cursor-pointer flex items-center justify-center"
+              className="p-2 border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/40 text-zinc-600 dark:text-zinc-400 hover:text-emerald-500 dark:hover:text-emerald-400 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 transition-all rounded-full cursor-pointer flex items-center justify-center"
               aria-label="Toggle Theme"
             >
               {theme === "dark" ? <FiSun className="size-4" /> : <FiMoon className="size-4" />}
@@ -112,7 +164,7 @@ export default function ThemeWrapper({ children }: { children: React.ReactNode }
       </div>
 
       {/* Global Footer */}
-      <footer className="border-t border-zinc-200 dark:border-zinc-900/80 bg-zinc-50/40 dark:bg-zinc-950/40 py-12 relative z-10">
+      <footer className="border-t border-zinc-200 dark:border-zinc-900/80 bg-zinc-50/40 dark:bg-zinc-950/40 py-4 relative z-10 shrink-0">
         <div className="mx-auto max-w-7xl px-6 flex flex-col md:flex-row items-center justify-between gap-6">
           <span className="font-mono text-[10px] text-zinc-500 dark:text-zinc-600 tracking-wider uppercase">
             © {new Date().getFullYear()} STAN FREDHERIC. BUILT WITH NEXT.JS APP ROUTER & STRICT TYPES.

@@ -7,7 +7,8 @@ import {
   SiNextdotjs, 
   SiHtml5, 
   SiUnity, 
-  SiGooglechrome 
+  SiGooglechrome, 
+  SiAstro
 } from "react-icons/si";
 
 interface ProjectItem {
@@ -22,7 +23,7 @@ interface ProjectItem {
 const PROJECTS_BY_YEAR: Record<string, ProjectItem[]> = {
   "2024": [
     {
-      title: "Pemrograman Web B - Bangsawan Cina B",
+      title: "Expense Tracker",
       description: "Web application project engineered for the Pemrograman Web course at Universitas Padjadjaran.",
       github: "https://github.com/praktikum-tiunpad-2023/project-pemrograman-web-b-bangsawan-cina-b.git",
       tech: ["PHP", "JavaScript", "HTML5", "CSS3"],
@@ -54,8 +55,8 @@ const PROJECTS_BY_YEAR: Record<string, ProjectItem[]> = {
       title: "Anniversary Gummy",
       description: "A creative, interactive digital anniversary gift landing page with personalized vectors and animations.",
       github: "https://github.com/craten54/Anniversary_Gummy.git",
-      tech: ["HTML5", "CSS3", "JavaScript", "GSAP"],
-      techIcon: SiHtml5,
+      tech: ["Astro", "CSS", "JavaScript"],
+      techIcon: SiAstro,
     }
   ],
   "2026": [
@@ -68,7 +69,7 @@ const PROJECTS_BY_YEAR: Record<string, ProjectItem[]> = {
       status: "onprogress"
     },
     {
-      title: "PPL Frontend",
+      title: "Panganesia",
       description: "Core frontend application interface engineered for Kelompok-7-PPL-I software engineering coursework.",
       github: "https://github.com/Kelompok-7-PPL-I/ppl-frontend",
       tech: ["Next.js", "React", "TypeScript", "Tailwind CSS"],

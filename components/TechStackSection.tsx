@@ -130,7 +130,7 @@ export default function TechStackSection() {
           {"// CORE TECHNOLOGICAL INDEX"}
         </span>
         <h2 className="text-3xl font-light tracking-tight text-zinc-900 dark:text-white font-sans">
-          Technical <span className="font-medium text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-cyan-600 to-amber-500 dark:from-emerald-400 dark:via-cyan-400 dark:to-amber-400">Weaponry & Stack</span>
+          Technical <span className="font-semibold text-zinc-900 dark:text-white">Weaponry & Stack</span>
         </h2>
       </div>
 
